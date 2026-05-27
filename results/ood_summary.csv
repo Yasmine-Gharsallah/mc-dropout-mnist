@@ -1,0 +1,7 @@
+metric,value
+Mean predictive entropy - MNIST (in-dist),0.1074
+Mean predictive entropy - FashionMNIST (OOD),1.3539
+Mean mutual information - MNIST (in-dist),0.0427
+Mean mutual information - FashionMNIST (OOD),0.3557
+OOD-detection AUROC (entropy),0.9861
+OOD-detection AUROC (mutual information),0.9644

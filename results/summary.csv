@@ -1,0 +1,9 @@
+metric,value
+Standard test accuracy,0.9897
+MC Dropout test accuracy (T=30),0.9885
+Mean predictive entropy - correct,0.0967
+Mean predictive entropy - wrong,0.9675
+Mean predictive variance - correct,0.001346
+Mean predictive variance - wrong,0.019609
+Entropy ratio (wrong / correct),10.00
+# wrong MC predictions,115 / 10000
