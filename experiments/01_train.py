@@ -21,7 +21,8 @@ def main():
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--dropout", type=float, default=0.5)
     parser.add_argument("--batch-size", type=int, default=128)
-    parser.add_argument("--weight-decay", type=float, default=0.0)
+    parser.add_argument("--weight-decay", type=float, default=1e-4,
+                        help="L2 regularisation strength; 1e-4 follows the paper's MNIST setup.")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--device", type=str, default="auto", choices=["auto", "cpu", "cuda"])
     args = parser.parse_args()

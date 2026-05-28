@@ -17,3 +17,14 @@ data/
 .idea/
 .vscode/
 .claude/
+
+# LaTeX build artifacts (keep .tex / .pdf / .sty, drop the rest)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg

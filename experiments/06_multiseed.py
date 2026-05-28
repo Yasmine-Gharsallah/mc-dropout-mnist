@@ -19,11 +19,12 @@ from mc_dropout import (
 )
 
 
-def run_one_seed(seed, epochs, dropout, T, device):
+def run_one_seed(seed, epochs, dropout, T, device, weight_decay):
     set_seed(seed)
     train_loader, test_loader = get_mnist_loaders(batch_size=128, data_dir=common.DATA_DIR)
     model = MCDropoutCNN(p=dropout).to(device)
-    train_model(model, train_loader, epochs=epochs, lr=1e-3, device=device, verbose=False)
+    train_model(model, train_loader, epochs=epochs, lr=1e-3,
+                device=device, weight_decay=weight_decay, verbose=False)
 
     std_probs, labels = standard_predict(model, test_loader, device)
     std_acc = (std_probs.argmax(1) == labels).float().mean().item()
@@ -51,6 +52,8 @@ def main():
     parser.add_argument("--epochs", type=int, default=3, help="epochs per seed (kept small)")
     parser.add_argument("--dropout", type=float, default=0.5)
     parser.add_argument("--T", type=int, default=30)
+    parser.add_argument("--weight-decay", type=float, default=1e-4,
+                        help="L2 regularisation; matches the paper's MNIST setup by default.")
     parser.add_argument("--device", type=str, default="auto", choices=["auto", "cpu", "cuda"])
     args = parser.parse_args()
 
@@ -60,7 +63,7 @@ def main():
     rows = []
     for seed in args.seeds:
         print(f"\n=== seed {seed} ===")
-        row = run_one_seed(seed, args.epochs, args.dropout, args.T, device)
+        row = run_one_seed(seed, args.epochs, args.dropout, args.T, device, args.weight_decay)
         print(row)
         rows.append(row)
 

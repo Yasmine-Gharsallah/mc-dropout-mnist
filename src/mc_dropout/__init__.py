@@ -27,6 +27,7 @@ from .mcdropout import (
     summarise,
 )
 from .train import train_model, save_checkpoint, load_checkpoint
+from .uci import DropoutMLP, train_mlp, mc_predict, mc_metrics, search_tau
 
 __all__ = [
     "set_seed", "get_device",
@@ -38,4 +39,5 @@ __all__ = [
     "mutual_information", "predictive_variance", "negative_log_likelihood",
     "summarise",
     "train_model", "save_checkpoint", "load_checkpoint",
+    "DropoutMLP", "train_mlp", "mc_predict", "mc_metrics", "search_tau",
 ]

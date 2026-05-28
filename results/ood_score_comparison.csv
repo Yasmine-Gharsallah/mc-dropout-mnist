@@ -1,0 +1,5 @@
+score,AUROC
+predictive entropy,0.9884611700000001
+mutual information (BALD),0.9588121900000002
+1 - max softmax (MC),0.982865075
+predictive variance,0.94838596
