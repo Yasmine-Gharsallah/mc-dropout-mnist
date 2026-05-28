@@ -10,7 +10,7 @@ The paper proves that a neural network trained with dropout is, mathematically, 
 
 This repository reproduces the paper's signature MNIST classification result, reproduces one row of its UCI regression table (Concrete Compressive Strength), and adds quantitative analyses the original paper does not report (calibration, out-of-distribution detection, selective prediction, aleatoric/epistemic decomposition).
 
-A typeset 9-page report (`report.pdf`, NeurIPS 2026 style) and a self-contained narrative notebook (`reproduction.ipynb`) are included.
+A self-contained narrative notebook (`reproduction.ipynb`) walks through every experiment end-to-end.
 
 ---
 
@@ -22,9 +22,8 @@ A typeset 9-page report (`report.pdf`, NeurIPS 2026 style) and a self-contained 
 4. [Quick start](#quick-start)
 5. [Running the experiments](#running-the-experiments)
 6. [The notebook (`reproduction.ipynb`)](#the-notebook-reproductionipynb)
-7. [The report (`report.pdf` / `report.tex`)](#the-report-reportpdf--reporttex)
-8. [Implementation notes](#implementation-notes)
-9. [Reproducibility](#reproducibility)
+7. [Implementation notes](#implementation-notes)
+8. [Reproducibility](#reproducibility)
 
 ---
 
@@ -78,9 +77,6 @@ mc-dropout-mnist/
 ├── requirements.txt
 ├── reproduction.ipynb              # self-contained narrative notebook (runs end-to-end)
 ├── notebook.ipynb                  # thin runner over the CLI experiment scripts (legacy)
-├── report.tex                      # NeurIPS 2026 source, single-author
-├── report.pdf                      # 9-page typeset report (body 5p + appendix 4p)
-├── neurips_2026.sty                # NeurIPS style file (adapted from official 2025)
 │
 ├── src/mc_dropout/                 # reusable library code
 │   ├── __init__.py
@@ -215,34 +211,6 @@ To regenerate the notebook after editing the prose or code cells, edit `experime
 python experiments/_build_notebook.py
 jupyter nbconvert --to notebook --execute reproduction.ipynb --output reproduction.ipynb
 ```
-
----
-
-## The report (`report.pdf` / `report.tex`)
-
-`report.pdf` is the NeurIPS-2026-formatted writeup (preprint option, 9 pages total, body 5 pages + appendix 4 pages, single author).
-
-Layout:
-
-| Pages | Content |
-|---|---|
-| 1 | Title, abstract (with GitHub URL), Section 1 — paper summary, key equations |
-| 2 | Section 1 continues; **Figure 1: rotating-digit per-pass scatter (paper Fig. 4 mirror)** |
-| 3 | Section 2 — reproduced results, Table 1 (headline numbers vs paper) |
-| 4 | Section 2 continues; Table 2 (UCI Concrete Strength vs paper); Section 3 — Discussion |
-| 5 | References; Appendix A begins (architecture TikZ diagram) |
-| 6 | Appendix figures: training, variance histogram, confident/uncertain examples |
-| 7 | Rotating-digit mean view, OOD histogram, uncertainty decomposition |
-| 8 | Wrong-confusion matrix, selective prediction, UCI scatter, reliability diagrams |
-| 9 | Hyperparameter table, multi-seed table, UCI per-split table, T-sweep table, implementation notes, AI-use disclosure, work-distribution statement |
-
-**Compiling locally.** Requires a LaTeX engine (MiKTeX, TeX Live, …) with the `neurips_2026.sty` file present (it lives next to `report.tex`). Two compile passes are needed to resolve cross-references:
-
-```bash
-pdflatex report.tex && pdflatex report.tex
-```
-
-If you don't have a local LaTeX install, you can also upload `report.tex`, `neurips_2026.sty`, and the `figures/` folder to [Overleaf](https://www.overleaf.com) and it will compile in the browser.
 
 ---
 

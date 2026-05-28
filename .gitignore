@@ -18,7 +18,7 @@ data/
 .vscode/
 .claude/
 
-# LaTeX build artifacts (keep .tex / .pdf / .sty, drop the rest)
+# LaTeX build artifacts and the report itself (kept locally, not published)
 *.aux
 *.log
 *.out
@@ -28,3 +28,6 @@ data/
 *.synctex.gz
 *.bbl
 *.blg
+report.pdf
+report.tex
+neurips_2026.sty
